@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.klu.model.Doctor;
+import com.klu.model.Patient;
 
 @Repository
-public interface DoctorRepo extends JpaRepository<Doctor,Integer>{
+public interface PatientRepo extends JpaRepository<Patient,Integer>{
 
-	/*Find Doctor where doctor.department.department_id = ?*/
-	List<Doctor> findByDepartmentDepartment_id(int deptid);
+	List<Patient> findByDoctorDoctor_id(int id);
 
 }

@@ -21,7 +21,13 @@ public class Appointment {
 	@JoinColumn(name="doctor_id")
 	private Doctor doctor;
 	
+	@ManyToOne
+	@JoinColumn(name="patient_id")
+	private Patient patient;
+	
 	private LocalDateTime appointment_st_time;
 	private LocalDateTime appointment_end_time;
 	
+	@Enumerated(EnumType.STRING)
+	private ApplicationStatus status;
 }
