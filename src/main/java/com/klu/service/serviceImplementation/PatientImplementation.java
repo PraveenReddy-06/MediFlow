@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.klu.model.Appointment;
 import com.klu.model.Patient;
-import com.klu.repo.AppointmentRepo;
 import com.klu.repo.PatientRepo;
 import com.klu.service.PatientService;
 
@@ -37,6 +36,11 @@ public class PatientImplementation implements PatientService{
 		
 		Patient p = patientRepo.findById(id).orElseThrow(() -> new RuntimeException("Patient Not Found"));
 		return p.getAppointmentList();
+	}
+
+	@Override
+	public Patient findPatientByPatient_id(int id) {
+		return patientRepo.findById(id).orElseThrow(() -> new RuntimeException("Patient Not Found"));
 	}
 	
 }

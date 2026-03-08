@@ -1,7 +1,6 @@
 package com.klu.model;
 import lombok.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.time.LocalTime;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -37,8 +36,12 @@ public class Doctor {
 	List<Appointment> appointments;
 	
 	private String name;
-	private LocalDateTime shiftStart;
-	private LocalDateTime shiftEnd;
+	
+	private LocalTime shiftStart;
+	private LocalTime shiftEnd;
+	private LocalTime breakStart;
+	private LocalTime breakEnd;
+	
 	private boolean available;		
 	
 	public Doctor(int id,String name,Department department) {

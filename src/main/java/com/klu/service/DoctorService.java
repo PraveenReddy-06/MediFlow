@@ -1,10 +1,6 @@
 package com.klu.service;
 
-import java.time.LocalDateTime; 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.klu.model.Doctor;
 import com.klu.model.Patient;
 

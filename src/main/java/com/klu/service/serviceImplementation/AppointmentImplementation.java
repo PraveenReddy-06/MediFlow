@@ -1,10 +1,10 @@
 package com.klu.service.serviceImplementation;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.klu.model.Appointment;
@@ -40,6 +40,14 @@ public class AppointmentImplementation implements AppointmentService {
 		
 		return appointrepo.findByPatientPatient_id(id);
 	}
-	
-	
+
+	@Override
+	public List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDateTime ldt,Doctor d) {
+		LocalDate date = ldt.toLocalDate();
+		LocalDateTime start = date.atStartOfDay();
+		LocalDateTime end = date.atTime(23,59,59);
+				
+		return appointrepo.getAppointmentOfThatDayOfDoctor(start,end,d);
+	}
+		
 }

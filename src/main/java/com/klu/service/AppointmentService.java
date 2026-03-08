@@ -2,9 +2,6 @@ package com.klu.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.klu.model.Appointment;
 import com.klu.model.Doctor;
 import com.klu.model.Patient;
@@ -15,6 +12,7 @@ public interface AppointmentService {
 	
 	/* i want to return doctor with doctor whose least end-time is min among all the doctors*/
 	LocalDateTime getLeastEndAppointmentTimeOfDoctor(int id);
+	List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDateTime ldt,Doctor d);
 	
 	List<Appointment> getAllAppointmentsOfDoctor(int id);
 	

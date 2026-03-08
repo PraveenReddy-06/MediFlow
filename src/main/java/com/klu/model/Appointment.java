@@ -30,4 +30,9 @@ public class Appointment {
 	
 	@Enumerated(EnumType.STRING)
 	private ApplicationStatus status;
+	
+	private int priorityScore;
+
+	private int severity;
+	private int appointmentType;
 }

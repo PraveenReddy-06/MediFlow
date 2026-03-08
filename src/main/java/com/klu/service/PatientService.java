@@ -12,6 +12,7 @@ public interface PatientService {
 
 	String createPatient(Patient p);
 	String DeletePatient(int id);
+	Patient findPatientByPatient_id(int id);
 	
 	List<Appointment> getAppointmentsList(int id);
 	
