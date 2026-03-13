@@ -1,5 +1,6 @@
 package com.klu.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import com.klu.model.Appointment;
@@ -12,11 +13,12 @@ public interface AppointmentService {
 	
 	/* i want to return doctor with doctor whose least end-time is min among all the doctors*/
 	LocalDateTime getLeastEndAppointmentTimeOfDoctor(int id);
-	List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDateTime ldt,Doctor d);
+	List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDate ldt,Doctor d);
 	
 	List<Appointment> getAllAppointmentsOfDoctor(int id);
 	
 	List<Patient> getPatientListByDoctor(int id);
+
 	 
 }
 /* int m=integer.max;

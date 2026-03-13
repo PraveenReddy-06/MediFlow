@@ -42,8 +42,7 @@ public class AppointmentImplementation implements AppointmentService {
 	}
 
 	@Override
-	public List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDateTime ldt,Doctor d) {
-		LocalDate date = ldt.toLocalDate();
+	public List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDate date,Doctor d) {
 		LocalDateTime start = date.atStartOfDay();
 		LocalDateTime end = date.atTime(23,59,59);
 				

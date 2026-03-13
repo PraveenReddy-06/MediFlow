@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class AppointmentProposal {
 
+	private String appointProposalId;
 	private Doctor doctor;
 	
 	private Patient patient;
@@ -14,9 +15,11 @@ public class AppointmentProposal {
 	private LocalDateTime appointment_end_time;
 	
 	private int priorityScore;
+	private int insertIndex;
 	
 	private int severity;
 	private int appointmentType;
+	private int duration;
 	
 	
 }

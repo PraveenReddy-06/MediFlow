@@ -24,8 +24,5 @@ public interface AppointmentRepo extends JpaRepository<Appointment,Integer>{
 
 	@Query("SELECT app FROM Appointment app WHERE app.appointment_st_time BETWEEN ?1 AND ?2 AND app.doctor = ?3 ORDER BY app.appointment_st_time")
 	List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDateTime start, LocalDateTime end, Doctor d);
-
-	
-
 		
 }

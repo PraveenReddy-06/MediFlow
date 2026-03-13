@@ -35,4 +35,5 @@ public class Appointment {
 
 	private int severity;
 	private int appointmentType;
+	private int duration;
 }
