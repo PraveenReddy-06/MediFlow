@@ -36,7 +36,7 @@ public class DepartmentImplementation implements DepartmentService {
 
 	@Override
 	public List<Doctor> getDoctorsListById(int id) {
-		return doctorRepo.findByDepartmentDepartment_id(id);
+		return doctorRepo.findByDepartmentDepartmentId(id);
 	}
 
 	

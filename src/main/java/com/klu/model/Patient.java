@@ -18,10 +18,10 @@ public class Patient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int patient_id;
+	private int patientId;
 	
 	@ManyToOne
-	@JoinColumn(name="doctor_id")
+	@JoinColumn(name="doctorId")
 	private Doctor doctor;
 	
 	@OneToMany(mappedBy="patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

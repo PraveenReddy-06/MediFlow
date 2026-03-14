@@ -15,10 +15,10 @@ public class Appointment {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int appointment_id;
+	private int appointmentId;
 	
 	@ManyToOne
-	@JoinColumn(name="doctor_id")
+	@JoinColumn(name="doctorId")
 	private Doctor doctor;
 	
 	@ManyToOne
@@ -33,7 +33,10 @@ public class Appointment {
 	
 	private int priorityScore;
 
-	private int severity;
-	private int appointmentType;
+	@Enumerated(EnumType.STRING)
+	private Serverity severity;
+	
+	@Enumerated(EnumType.STRING)
+	private AppointmentType appointmentType;
 	private int duration;
 }

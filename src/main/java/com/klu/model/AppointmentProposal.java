@@ -17,8 +17,8 @@ public class AppointmentProposal {
 	private int priorityScore;
 	private int insertIndex;
 	
-	private int severity;
-	private int appointmentType;
+	private Serverity severity;
+	private  AppointmentType appointmentType;
 	private int duration;
 	
 	

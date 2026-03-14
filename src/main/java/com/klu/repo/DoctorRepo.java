@@ -11,6 +11,6 @@ import com.klu.model.Doctor;
 public interface DoctorRepo extends JpaRepository<Doctor,Integer>{
 
 	/*Find Doctor where doctor.department.department_id = ?*/
-	List<Doctor> findByDepartmentDepartment_id(int deptid);
+	List<Doctor> findByDepartmentDepartmentId(int deptid);
 
 }

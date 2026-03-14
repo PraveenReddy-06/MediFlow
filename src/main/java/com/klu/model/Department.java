@@ -17,11 +17,11 @@ public class Department {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int department_id;
+	private int departmentId;
 	
 	@OneToMany(mappedBy="department", cascade = CascadeType.ALL)
 	List<Doctor> doctorsList;
 	
-	private String depart_name;
+	private String departName;
 	
 }

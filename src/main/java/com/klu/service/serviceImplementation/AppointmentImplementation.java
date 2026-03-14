@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.klu.model.Appointment;
 import com.klu.model.Doctor;
-import com.klu.model.Patient;
 import com.klu.repo.AppointmentRepo;
 import com.klu.service.AppointmentService;
 
@@ -32,15 +31,14 @@ public class AppointmentImplementation implements AppointmentService {
 
 	@Override
 	public List<Appointment> getAllAppointmentsOfDoctor(int id) {
-		return appointrepo.findByDoctorDoctor_id(id);
-	}
-	
-	@Override
-	public List<Patient> getPatientListByDoctor(int id) {
-		
-		return appointrepo.findByPatientPatient_id(id);
+	    return appointrepo.findByDoctorId(id);
 	}
 
+	@Override
+	public List<Appointment> getPatientListByDoctor(int id) {
+	    return appointrepo.findByPatientId(id);
+	}
+	
 	@Override
 	public List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDate date,Doctor d) {
 		LocalDateTime start = date.atStartOfDay();

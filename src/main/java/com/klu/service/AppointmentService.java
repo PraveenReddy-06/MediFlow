@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import com.klu.model.Appointment;
 import com.klu.model.Doctor;
-import com.klu.model.Patient;
 
 public interface AppointmentService {
 
@@ -17,8 +16,7 @@ public interface AppointmentService {
 	
 	List<Appointment> getAllAppointmentsOfDoctor(int id);
 	
-	List<Patient> getPatientListByDoctor(int id);
-
+	List<Appointment> getPatientListByDoctor(int id);
 	 
 }
 /* int m=integer.max;

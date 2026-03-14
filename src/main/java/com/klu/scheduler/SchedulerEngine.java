@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import com.klu.model.ApplicationStatus;
 import com.klu.model.Appointment;
 import com.klu.model.AppointmentProposal;
+import com.klu.model.AppointmentType;
 import com.klu.model.Doctor;
+import com.klu.model.Serverity;
 import com.klu.repo.AppointmentRepo;
 import com.klu.service.AppointmentService;
 import com.klu.service.DepartmentService;
@@ -38,12 +40,12 @@ public class SchedulerEngine {
     }
     
     private final Map<String, AppointmentProposal> proposalRequests = new ConcurrentHashMap<>();
-	public AppointmentProposal scheduleAppointment(int pid,String problemName,int severity,int age,int type) {
+	public AppointmentProposal scheduleAppointment(int pid,String problemName,Serverity severity,int age,AppointmentType type) {
 				
 		AppointmentProposal ap = new AppointmentProposal();
 	ap.setSeverity(severity);
 	ap.setAppointmentType(type);
-	ap.setPatient(patientService.findPatientByPatient_id(pid));
+	ap.setPatient(patientService.findPatientByPatientId(pid));
 		
 		SymptomDetails details = SymptomMap.getProblemDetails(problemName);
 		
@@ -60,7 +62,7 @@ public class SchedulerEngine {
 		LocalDateTime minEndTime = null;
 		
 		for (Doctor d : doctorsList) {
-		    LocalDateTime endTime = appointmentService.getLeastEndAppointmentTimeOfDoctor(d.getDoctor_id());
+		    LocalDateTime endTime = appointmentService.getLeastEndAppointmentTimeOfDoctor(d.getDoctorId());
 		    if (minEndTime == null || endTime.isBefore(minEndTime)) {
 		        doctor = d;
 		        minEndTime = endTime;
@@ -74,7 +76,7 @@ public class SchedulerEngine {
 	ap.setDoctor(doctor);
 		List<Appointment> appointmentsList= appointmentService.getAppointmentOfThatDayOfDoctor(date,doctor);
 		
-		int score = PriorityScore.calPriorityScore(severity,age,duration);
+		int score = PriorityScore.calPriorityScore(severity,age,duration,type);
 	ap.setPriorityScore(score);
 			
 		int insertIndex = appointmentsList.size();	
@@ -132,7 +134,7 @@ public class SchedulerEngine {
 		}
 	ap.setAppointment_st_time(predictedStartTime);
 	ap.setAppointment_end_time(predictedEndTime);
-	String proposalId = UUID.randomUUID().toString();
+		String proposalId = UUID.randomUUID().toString();
 	ap.setAppointProposalId(proposalId);
 	
 	proposalRequests.put(proposalId, ap);

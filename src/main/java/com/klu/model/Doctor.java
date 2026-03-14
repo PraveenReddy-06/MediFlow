@@ -23,10 +23,10 @@ public class Doctor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int doctor_id;
+	private int doctorId;
 	
 	@ManyToOne
-	@JoinColumn(name="department_id")
+	@JoinColumn(name="departmentId")
 	private Department department;
 	
 	@OneToMany(mappedBy="doctor",cascade = CascadeType.ALL)
@@ -45,7 +45,7 @@ public class Doctor {
 	private boolean available;		
 	
 	public Doctor(int id,String name,Department department) {
-		this.doctor_id=id;
+		this.doctorId=id;
 		this.name=name;
 		this.department=department;
 	}

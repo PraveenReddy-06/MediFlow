@@ -50,7 +50,7 @@ public class DoctorImplementation implements DoctorService{
 
 	@Override
 	public List<Patient> getAllPatients(int id) {	
-		return patientRepo.findByDoctorDoctor_id(id);
+		return patientRepo.findByDoctorDoctorId(id);
 	}
 	
 }

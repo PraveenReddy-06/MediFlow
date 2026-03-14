@@ -39,7 +39,7 @@ public class PatientImplementation implements PatientService{
 	}
 
 	@Override
-	public Patient findPatientByPatient_id(int id) {
+	public Patient findPatientByPatientId(int id) {
 		return patientRepo.findById(id).orElseThrow(() -> new RuntimeException("Patient Not Found"));
 	}
 	

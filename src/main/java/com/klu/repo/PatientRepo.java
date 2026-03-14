@@ -8,6 +8,6 @@ import com.klu.model.Patient;
 @Repository
 public interface PatientRepo extends JpaRepository<Patient,Integer>{
 
-	List<Patient> findByDoctorDoctor_id(int id);
+	List<Patient> findByDoctorDoctorId(int id);
 
 }
