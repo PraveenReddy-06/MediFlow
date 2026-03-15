@@ -18,14 +18,14 @@ public class Patient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int patientId;
+	private Integer patientId;
 	
 	@ManyToOne
 	@JoinColumn(name="doctorId")
 	private Doctor doctor;
 	
 	@OneToMany(mappedBy="patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	List<Appointment> AppointmentList;
+	List<Appointment> appointmentList;
 	
 	private String patient_name;
 	private int age;

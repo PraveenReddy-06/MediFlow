@@ -23,7 +23,7 @@ public class Doctor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int doctorId;
+	private Integer doctorId;
 	
 	@ManyToOne
 	@JoinColumn(name="departmentId")

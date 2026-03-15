@@ -40,11 +40,11 @@ public class AppointmentImplementation implements AppointmentService {
 	}
 	
 	@Override
-	public List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDate date,Doctor d) {
+	public List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDate date,int dId) {
 		LocalDateTime start = date.atStartOfDay();
 		LocalDateTime end = date.atTime(23,59,59);
 				
-		return appointrepo.getAppointmentOfThatDayOfDoctor(start,end,d);
+		return appointrepo.getAppointmentOfThatDayOfDoctor(start,end,dId);
 	}
 		
 }

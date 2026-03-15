@@ -12,7 +12,7 @@ public interface AppointmentService {
 	
 	/* i want to return doctor with doctor whose least end-time is min among all the doctors*/
 	LocalDateTime getLeastEndAppointmentTimeOfDoctor(int id);
-	List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDate ldt,Doctor d);
+	List<Appointment> getAppointmentOfThatDayOfDoctor(LocalDate ldt,int dId);
 	
 	List<Appointment> getAllAppointmentsOfDoctor(int id);
 	

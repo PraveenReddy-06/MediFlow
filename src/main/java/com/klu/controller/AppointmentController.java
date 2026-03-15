@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.klu.model.Appointment;
-import com.klu.model.Doctor;
 import com.klu.service.AppointmentService;
 
 @RestController
@@ -26,17 +25,17 @@ public class AppointmentController {
 		return service.addAppointment(app);
 	}
 	
-	@GetMapping("/getAppointmentOfThatDayOfDoctor/{ldt}/{d}")
-	public List<Appointment> getAppointmentOfThatDayOfDoctor(@RequestParam LocalDate ldt,@RequestParam Doctor d){
-		return service.getAppointmentOfThatDayOfDoctor(ldt, d);
+	@GetMapping("/getAppointmentOfThatDayOfDoctor")
+	public List<Appointment> getAppointmentOfThatDayOfDoctor(@RequestParam LocalDate ldt,@RequestParam int dId){
+		return service.getAppointmentOfThatDayOfDoctor(ldt, dId);
 	}
 	
-	@GetMapping("/getAllAppointmentsOfDoctor/{id}")
+	@GetMapping("/getAllAppointmentsOfDoctor")
 	public List<Appointment> getAllAppointmentsOfDoctor(@RequestParam int id){
 		return service.getAllAppointmentsOfDoctor(id);
 	}
 	
-	@GetMapping("/getPatientListByDoctor/{id}")
+	@GetMapping("/getPatientListByDoctor")
 	public List<Appointment> getPatientListByDoctor(@RequestParam int id){
 		return service.getPatientListByDoctor(id);
 	}

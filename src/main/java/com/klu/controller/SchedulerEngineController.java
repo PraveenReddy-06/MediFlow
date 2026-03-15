@@ -21,7 +21,7 @@ public class SchedulerEngineController {
 	@Autowired 
 	SchedulerEngine service;
 	
-	@GetMapping("/scheduleAppointment")
+	@GetMapping("/scheduleAppointment/{pid}/{problemName}/{severity}/{age}/{type}")
 	public AppointmentProposal scheduleAppointment(@PathVariable int pid,@PathVariable String problemName,@PathVariable Serverity severity,@PathVariable int age,@PathVariable AppointmentType type) {
 		return service.scheduleAppointment(pid, problemName, severity, age, type);
 	}

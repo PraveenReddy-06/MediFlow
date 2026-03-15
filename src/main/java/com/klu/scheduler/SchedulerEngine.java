@@ -62,7 +62,12 @@ public class SchedulerEngine {
 		LocalDateTime minEndTime = null;
 		
 		for (Doctor d : doctorsList) {
-		    LocalDateTime endTime = appointmentService.getLeastEndAppointmentTimeOfDoctor(d.getDoctorId());
+			LocalDateTime endTime = appointmentService.getLeastEndAppointmentTimeOfDoctor(d.getDoctorId());
+		    if(endTime == null){
+		        doctor = d;
+		        minEndTime = null;
+		        break;
+		    }
 		    if (minEndTime == null || endTime.isBefore(minEndTime)) {
 		        doctor = d;
 		        minEndTime = endTime;
@@ -74,7 +79,7 @@ public class SchedulerEngine {
 		    throw new RuntimeException("No doctor available");
 		}
 	ap.setDoctor(doctor);
-		List<Appointment> appointmentsList= appointmentService.getAppointmentOfThatDayOfDoctor(date,doctor);
+		List<Appointment> appointmentsList= appointmentService.getAppointmentOfThatDayOfDoctor(date,doctor.getDoctorId());
 		
 		int score = PriorityScore.calPriorityScore(severity,age,duration,type);
 	ap.setPriorityScore(score);
@@ -124,6 +129,17 @@ public class SchedulerEngine {
 			    predictedStartTime = breakEnd.plusMinutes(BUFFER_MIN);
 		} 
 		predictedEndTime = predictedStartTime.plusMinutes(duration);
+		/*handle next appointment overlap*/
+		if(insertIndex < appointmentsList.size()) {
+
+		    Appointment next = appointmentsList.get(insertIndex);
+
+		    if(predictedEndTime.isAfter(next.getAppointment_st_time())) {
+
+		        predictedStartTime = next.getAppointment_end_time().plusMinutes(BUFFER_MIN);
+		        predictedEndTime = predictedStartTime.plusMinutes(duration);
+		    }
+		}
 		
 		/* Handle END TMIE to next date if after doctorShiftEnd*/
 		LocalDateTime shiftEnd =LocalDateTime.of(predictedStartTime.toLocalDate() , doctor.getShiftEnd());
@@ -163,9 +179,9 @@ public class SchedulerEngine {
 		
 		
 		LocalDate date = ap.getAppointment_st_time().toLocalDate();
-		List<Appointment> appointmentsList= appointmentService.getAppointmentOfThatDayOfDoctor(date,ap.getDoctor());
+		List<Appointment> appointmentsList= appointmentService.getAppointmentOfThatDayOfDoctor(date,ap.getDoctor().getDoctorId());
 		int insertIndex=ap.getInsertIndex();
-		if(insertIndex < 0 || insertIndex >= appointmentsList.size()){
+		if(insertIndex < 0 || insertIndex > appointmentsList.size()){
 		    throw new RuntimeException("Invalid insert index");
 		}
 		appointmentService.addAppointment(appointment);
