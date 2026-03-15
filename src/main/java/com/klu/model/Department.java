@@ -1,6 +1,8 @@
 package com.klu.model;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +21,7 @@ public class Department {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer departmentId;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="department", cascade = CascadeType.ALL)
 	List<Doctor> doctorsList;
 	

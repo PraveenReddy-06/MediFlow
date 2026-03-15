@@ -33,7 +33,7 @@ public class DoctorController {
 	}
 	
 	@GetMapping("/getDoctor")
-	public Doctor getDoctorById(@PathVariable int id) {
+	public Doctor getDoctorById(@RequestParam int id) {
 		return service.getDoctorById(id);
 	}
 	

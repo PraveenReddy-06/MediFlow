@@ -2,6 +2,8 @@ package com.klu.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +26,7 @@ public class Patient {
 	@JoinColumn(name="doctorId")
 	private Doctor doctor;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	List<Appointment> appointmentList;
 	

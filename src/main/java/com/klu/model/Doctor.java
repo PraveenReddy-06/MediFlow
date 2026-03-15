@@ -3,6 +3,8 @@ import lombok.*;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,13 +27,16 @@ public class Doctor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer doctorId;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="departmentId")
 	private Department department;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="doctor",cascade = CascadeType.ALL)
 	List<Patient> patients;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="doctor",cascade = CascadeType.ALL)
 	List<Appointment> appointments;
 	

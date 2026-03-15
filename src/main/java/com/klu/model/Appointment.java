@@ -2,6 +2,8 @@ package com.klu.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,10 +19,12 @@ public class Appointment {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer appointmentId;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="doctorId")
 	private Doctor doctor;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="patient_id")
 	private Patient patient;

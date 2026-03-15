@@ -48,13 +48,16 @@ public class SchedulerEngine {
 	ap.setPatient(patientService.findPatientByPatientId(pid));
 		
 		SymptomDetails details = SymptomMap.getProblemDetails(problemName);
+		if(details==null) {
+			throw new RuntimeException("No Problem found");
+		}
 		
 		int department = details.getDepartment();
 		int duration = details.getAverageConsultationTime();
 	ap.setDuration(duration);
 		 		 
 		List<Doctor> doctorsList = departmentService.getDoctorsListById(department);
-		if(doctorsList.isEmpty()){
+		if(doctorsList == null ||doctorsList.isEmpty()){
 		    throw new RuntimeException("No doctors available for department");
 		}
 		
