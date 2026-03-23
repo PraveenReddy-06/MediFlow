@@ -1,0 +1,32 @@
+Project Development Timeline
+
+01-01-2026 – Identified the core problem in hospital appointment scheduling.
+01-01-2026 – Analyzed why the problem occurs and identified the main reasons (inefficient scheduling
+	     long waiting times, and poor resource allocation).
+09-01-2026 – Proposed solutions to reduce patient waiting time and improve appointment allocation.
+10-01-2026 – Designed the overall system pipeline.
+11-02-2026 – Identified and finalized the input parameters required for the system.
+11-02-2026 – Designed the Doctor schema.
+12-02-2026 – Developed an in-memory prototype to test scheduling logic.
+13-02-2026 – Studied deployment architectures:
+	     AWS API Gateway + Lambda (Serverless)
+	     Spring Boot → Docker Image → ECS → Load Balancer.
+15-02-2026 – Designed the database schema for the following tables:Appointments, Departments, Doctors, Patients.
+16-02-2026 – Designed the MVC structure for the Doctor module.
+17-02-2026 – Created four model classes and learned the java.time package for date-time handling.
+18-02-2026 – Implemented database query flow and added the Service layer.
+19-02-2026 – Revised React concepts for the frontend.
+24-02-2026 – Implemented the Scheduler Engine.
+25-02-2026 – Implemented the Appointment service layer.
+27-02-2026 – Created the AppointmentProposal class for scheduling suggestions.
+08-03-2026 – Improved the Scheduler Engine logic.
+13-03-2026 – Implemented handling of doctor shift times and break periods.
+14-03-2026 – Developed the Controller package for API endpoints.
+15-03-2026 – First system run:
+	     Initial tests: 23/32 passed (71.9%)
+	     Fixed bugs and achieved 100% test success.
+23-03-2026 - Started FrontEnd
+
+Resources for those interested:
+GitHub:https://github.com/PraveenReddy-06/MediFlow
+Rough documentation of the Smart Hospital Scheduling Engine:https://drive.google.com/file/d/1P3cv6nnVA-8l0VH7Xaxo82-XAMrUvTKl/view?usp=sharing
